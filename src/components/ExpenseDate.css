@@ -1,0 +1,23 @@
+.DateInfoBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   background-color: #111010;
+   border: white 0.8px solid;
+   border-radius: 20%;
+   padding: 10px 20px;
+   width: 90px;
+   color: white;
+   /* text-align: center; */
+ }
+ .day{
+   font-weight: bolder;
+   font-size: 1.4rem;
+ }
+ .year{
+   font-size: 0.8rem;
+ }
+ 
+
+ 
