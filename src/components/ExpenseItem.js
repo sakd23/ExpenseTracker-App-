@@ -8,7 +8,7 @@ function ExpenseItem(props){
     }
 
    const clickHandler=()=>{
-       console.log("clicked{{{{")
+       console.log("clicked")
    }
     return (
         <Card className="expense-item">
