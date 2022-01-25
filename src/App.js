@@ -1,6 +1,6 @@
-
+import React, {useState} from "react"; 
 import Expenses  from "./components/Expenses";
-
+import NewExpense from "./components/NewExpense/NewExpense";
 // array containing info about expenses
 const expensesList = [
   {
@@ -25,9 +25,23 @@ const expensesList = [
 ];
 
 function App() {
+  const [dynamicExpenseList,setDynamicExpenseList]=useState(expensesList);
+
+const newExpenseDataHandler=(newExpenseData)=>{
+  console.log(newExpenseData);
+   setDynamicExpenseList((currExpenseList)=>{
+     return [newExpenseData, ...currExpenseList]
+     
+   })
+}  
+
+
+
   return (
     <div>
-      <Expenses expenses={expensesList} />
+ 
+      <NewExpense  onNewExpense={newExpenseDataHandler}/>
+      <Expenses items={dynamicExpenseList} />
 
     </div>
   );

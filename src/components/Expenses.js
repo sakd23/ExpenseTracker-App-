@@ -1,17 +1,39 @@
-import React from"react";
-import ExpenseItem from "./ExpenseItem";
+import React, { useState } from "react";
 import "./Expenses.css";
 import Card from "./Card";
-function Expenses(props){
+import ExpensesFilter from "../UI/ExpensesFilter";
+// import ExpenseItem from "./ExpenseItem";
+import ExpenseList from "./ExpenseList";
 
-    return (
-        <Card className="expenses">
-      <ExpenseItem title={props.expenses[0].title} amount={props.expenses[0].amount} date={props.expenses[0].date}></ExpenseItem>
-      <ExpenseItem title={props.expenses[1].title} amount={props.expenses[1].amount} date={props.expenses[1].date}></ExpenseItem>
-      <ExpenseItem title={props.expenses[2].title} amount={props.expenses[2].amount} date={props.expenses[2].date}></ExpenseItem>
-      <ExpenseItem title={props.expenses[3].title} amount={props.expenses[3].amount} date={props.expenses[3].date}></ExpenseItem>
-        </Card>
-    )
+
+function Expenses(props) {
+  const [selectedYear, setSelectedYear] = useState("2022");
+
+ 
+  const currYearDisplay = (currYear) => {
+    setSelectedYear(currYear);
+    
+  };
+
+let dynamicExpenseList=props.items.filter(item=>item.date.getFullYear().toString()===selectedYear);  
+  
+  return (
+
+    
+
+    <div>
+      <Card className="expenses">
+        <ExpensesFilter
+          onYearChange={currYearDisplay}
+          currYear={selectedYear}
+        />
+
+<ExpenseList items={dynamicExpenseList}  />
+   
+    
+   </Card>
+    </div>
+  )
 }
 
 export default Expenses;
